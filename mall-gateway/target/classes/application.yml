@@ -1,0 +1,63 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: mall-gateway
+
+  cloud:
+    # 注册中心
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    # 网关
+    gateway:
+      # 是否开启网关
+      enabled: true
+      # 是否开启利用微服务名访问功能
+      discovery:
+        locator:
+          # 默认为 false，设为 true 开启通过微服务名称创建路由的功能，即可以通过微服务名访问服务
+          # http://localhost:8888/{mall-user}/user/get/2
+          enabled: false
+      # 设置路由：路由ID，路由到微服务的 URI，断言
+      routes:
+          # 全局唯一
+        - id: mall-user-router
+          # uri: http://localhost:8010 # 明确制定路由到具体到地址
+          uri: lb://mall-user # lb 整合负载均衡器 ribbon，loadbalancer
+          predicates:
+            # 测试：http://localhost:8888/user/get/2
+            - Path=/user/**
+            # 匹配在指定日期时间发生之后的请求可以通过，入参是 ZoneDateTime 类型
+#            - After=2021-10-21T23:22:53.794078+08:00[Asia/Shanghai]
+#            - Before=2021-10-21T23:22:53.794078+08:00[Asia/Shanghai]
+#            - Between=2021-10-21T23:22:53.794078+08:00[Asia/Shanghai], 2021-10-21T23:22:59.794078+08:00[Asia/Shanghai]
+            # Cookie 匹配，cookie 中需要有 username=eric 的cookie
+#            - Cookie=username, eric
+            # Header 匹配
+#            - Header=x-request-id, \d+
+
+            # 自定义断言工厂
+#            - name: CheckAuth
+#                args:
+#                name: eric
+            # 快捷配置
+#            - CheckAuth=eric
+          filters:
+          - AddRequestHeader=X-Request-color, red # 添加请求头
+          - AddRequestParameter=color, blue # 添加请求参数
+#          - PrefixPath=/hello # 添加请求前缀，需要在对应的微服务: server.servlet.context-path=/hello
+#          - RedirectTo=302, https://www.baidu.com # 将请求重定向
+          - CheckAuth=eric, boy
+
+      # 跨域配置
+#      globalcors:
+#        cors-configurations:
+#          '[/**]':
+#            allowedOrigins: "*"
+#            allowedMethods:
+#              - GET
+#              - POST
+#              - DELETE
+#              - PUT
+#              - OPTION

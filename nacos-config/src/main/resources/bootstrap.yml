@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: nacos-config
+  # -- profile 粒度配置
+  # -- ${spring.application.name}-${profile}.${file.extension:properties}
+  # -- nacos-config-dev.yml
+  profiles:
+    active: dev
+
+  cloud:
+    nacos:
+      config:
+        # -- 配置中心开关
+        enabled: true
+        # -- 配置中心地址
+        server-addr: 127.0.0.1:8848
+        # -- dataid 为 yml 的文件扩展名配置方式
+        # -- ${spring.application.name}.${file.extension:properties}
+        # -- nacos-config.yml
+        file-extension: yml
+        # -- 自定义 namespace 的配置，可以配合 profile 使用
+        namespace: a19d770e-0c72-4ec0-9224-5bf586be2628
+        # -- 自定义 Group 的配置
+        group: DEFAULT_GROUP
+        # -- 通用配置，多个微服务可以公用的配置，如；redis，mysql
+        shared-configs:
+          - data-id: common.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+        # -- 扩展配置，多个微服务可以公用的配置，如：nacos
+        extension-configs:
+          - data-id: extension-0.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+          - data-id: extension-1.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+
+
+# 优先级
+# ${spring.application.name}-${profile}.${file.extension:properties}
+# ${spring.application.name}.${file.extension:properties}
+# ${spring.application.name}
+# extension-configs
+# shared-configs
+
