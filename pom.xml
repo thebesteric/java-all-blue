@@ -16,6 +16,9 @@
         <module>nacos-config</module>
         <module>mall-gateway</module>
         <module>demo-oauth2</module>
+        <module>demo-jwt</module>
+        <module>demo-oauth2-sso</module>
+        <module>demo-oauth2-sso-client</module>
     </modules>
 
     <parent>
@@ -52,7 +55,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>

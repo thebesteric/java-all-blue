@@ -8,15 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="demo-oauth2" />
+        <module name="demo-jwt" />
         <module name="mall-user-standby" />
+        <module name="mall-account-standby" />
+        <module name="demo-oauth2-sso" />
+        <module name="mall-comm" />
+        <module name="demo-oauth2-sso-client" />
         <module name="demo-dubbo-consumer" />
         <module name="nacos-config" />
         <module name="mall-user" />
         <module name="mall-account" />
         <module name="mall-order" />
-        <module name="mall-account-standby" />
         <module name="demo-dubbo-provider" />
-        <module name="mall-comm" />
         <module name="mall-gateway" />
       </profile>
     </annotationProcessing>
@@ -33,7 +36,10 @@
       <module name="demo-dubbo" options="-parameters" />
       <module name="demo-dubbo-consumer" options="-parameters" />
       <module name="demo-dubbo-provider" options="-parameters" />
+      <module name="demo-jwt" options="-parameters" />
       <module name="demo-oauth2" options="-parameters" />
+      <module name="demo-oauth2-sso" options="-parameters" />
+      <module name="demo-oauth2-sso-client" options="-parameters" />
       <module name="getway" options="-parameters" />
       <module name="instrument-agent" options="" />
       <module name="instrument-agent-demo" options="" />
