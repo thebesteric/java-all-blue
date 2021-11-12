@@ -50,6 +50,18 @@ spring:
 #          - RedirectTo=302, https://www.baidu.com # 将请求重定向
           - CheckAuth=eric, boy
 
+        - id: demo-oauth2-sso
+          uri: lb://oauth2-sso-server
+          predicates:
+            - Path=/oauth/**
+
+        - id: demo-oauth2-client
+          uri: lb://oauth2-sso-client
+          predicates:
+            - Path=/client/user/**
+
+
+
       # 跨域配置
 #      globalcors:
 #        cors-configurations:
@@ -61,3 +73,9 @@ spring:
 #              - DELETE
 #              - PUT
 #              - OPTION
+
+my:
+  gateway:
+    shouldSkipUrls:
+      - /oauth/**
+      - /sso/**

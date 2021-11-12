@@ -1,0 +1,26 @@
+server:
+  port: 9999
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: oauth2-sso-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 # 配置 nacos 注册中心地址
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/oauth2?useUnicode=true&characterEncoding=UTF-8&userSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    druid:
+      initial-size: 5 # 连接池初始化大小
+      min-idle: 10 # 最小空闲连接数
+      max-active: 20 # 最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" # 不统计这些请求数据
+      stat-view-servlet:
+        login-username: druid # 访问监控网页的登录用户名
+        login-password: druid # 访问监控网页的登录密码

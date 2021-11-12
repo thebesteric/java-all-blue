@@ -6,15 +6,23 @@ server:
         # 预防 cookie 冲突，冲突会导致登录验证不通过
         name: OAUTH2-CLIENT-SESSIONID-${server.port}
 
+spring:
+  application:
+    name: oauth2-sso-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 # 配置 nacos 注册中心地址
+
 # 授权服务地址
-oauth2-server-url: http://127.0.0.1:8080
+oauth2-server-url: http://127.0.0.1:9999
 
 # 与授权服务器对应的配置
 security:
   oauth2:
     client:
       client-id: client
-      client-secret: 123456
+      client-secret: 123123
       user-authorization-uri: ${oauth2-server-url}/oauth/authorize
       access-token-uri: ${oauth2-server-url}/oauth/token
     resource:

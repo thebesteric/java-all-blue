@@ -34,9 +34,11 @@ public class UserController {
     @GetMapping("/get/{id}")
     public R get(@PathVariable String id,
                      @RequestHeader(value = "X-Request-color", required = false) String xRequestColor,
+                    @RequestHeader(value = "x-user-id", required = false) String userId,
                      @RequestParam(value = "color", required = false) String color) throws UnknownHostException {
         System.out.println("request-header=" + xRequestColor);
         System.out.println("request-param=" + color);
+        System.out.println("x-user-id=" + userId);
         userService.get(id);
         return R.success().setData("[" + InetAddress.getLocalHost().getHostAddress() + ":" + port + "] user-" + id);
     }

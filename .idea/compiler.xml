@@ -20,6 +20,7 @@
         <module name="mall-account" />
         <module name="mall-order" />
         <module name="demo-dubbo-provider" />
+        <module name="mall-product" />
         <module name="mall-gateway" />
       </profile>
     </annotationProcessing>
@@ -49,6 +50,7 @@
       <module name="mall-comm" options="-parameters" />
       <module name="mall-gateway" options="-parameters" />
       <module name="mall-order" options="-parameters" />
+      <module name="mall-product" options="-parameters" />
       <module name="mall-user" options="-parameters" />
       <module name="mall-user-standby" options="-parameters" />
       <module name="nacos-config" options="-parameters" />

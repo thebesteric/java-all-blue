@@ -6,9 +6,9 @@
 
     <modules>
         <module>mall-order</module>
-        <module>mall-user</module>
+        <module>mall-userDetail</module>
         <module>mall-comm</module>
-        <module>mall-user-standby</module>
+        <module>mall-userDetail-standby</module>
         <module>mall-account</module>
         <module>mall-account-standby</module>
         <module>demo-dubbo-provider</module>
@@ -19,6 +19,7 @@
         <module>demo-jwt</module>
         <module>demo-oauth2-sso</module>
         <module>demo-oauth2-sso-client</module>
+        <module>mall-product</module>
     </modules>
 
     <parent>

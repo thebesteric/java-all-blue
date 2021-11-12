@@ -24,11 +24,18 @@ public class JwtConfig {
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-        // 配置 jwt 使用的密钥
+        // 配置 jwt 使用的密钥，这个密钥需要给到下面的服务，来对 token 进行校验
         jwtAccessTokenConverter.setSigningKey("123456");
         return jwtAccessTokenConverter;
     }
 
+    // @Bean
+    // public KeyPair keyPair() {
+    //     KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource(jwtCAProperties.getKeyPairName()), jwtCAProperties.getKeyPairSecret().toCharArray());
+    //     return keyStoreKeyFactory.getKeyPair(jwtCAProperties.getKeyPairAlias(), jwtCAProperties.getKeyPairStoreSecret().toCharArray());
+    // }
+
+    // 对 jwt 对一个增强，可以加入其他信息
     @Bean
     public JwtTokenEnhancer jwtTokenEnhancer() {
         return new JwtTokenEnhancer();
@@ -38,7 +45,12 @@ public class JwtConfig {
 
         @Override
         public OAuth2AccessToken enhance(OAuth2AccessToken oAuth2AccessToken, OAuth2Authentication oAuth2Authentication) {
+
+            MemberDetails memberDetail = (MemberDetails) oAuth2Authentication.getPrincipal();
+
             Map<String, Object> info = new HashMap<>();
+            // 这里可以设置相关信息
+            info.put("userId", memberDetail.getUser().getId());
             info.put("other", "other info");
             ((DefaultOAuth2AccessToken) oAuth2AccessToken).setAdditionalInformation(info);
             return oAuth2AccessToken;

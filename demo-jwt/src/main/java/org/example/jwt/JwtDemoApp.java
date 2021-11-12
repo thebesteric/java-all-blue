@@ -47,9 +47,7 @@ public class JwtDemoApp {
 
     @Test
     public void parseToken() {
-        String token = "eyJhbGciOiJIUzI1NiJ9" +
-                ".eyJqdGkiOiI2NjYiLCJzdWIiOiJlcmljIiwiaWF0IjoxNjM1ODM5Njc1LCJleHAiOjE2MzU4Mzk3MzUsInJvbGVzIjoiYWRtaW4iLCJsb2dvIjoieHh4LmpwZyJ9" +
-                ".1ATSe72RQOnCwHtYvCdpL8Y_58LpLyE8-h2MJ55MkU4";
+        String token = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI2NjYiLCJzdWIiOiJlcmljIiwiaWF0IjoxNjM2NjUxNjczLCJleHAiOjE2MzY2NTE3MzMsInJvbGVzIjoiYWRtaW4iLCJsb2dvIjoieHh4LmpwZyJ9.0UjhfXaw3bnM_r0H6GvYlp-d6oW2CdDmgUBjARrObqU";
         // 解析 token
         Claims claims = Jwts.parser()
                 .setSigningKey(SECRET_KEY)
