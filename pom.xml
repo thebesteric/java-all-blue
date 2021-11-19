@@ -6,9 +6,9 @@
 
     <modules>
         <module>mall-order</module>
-        <module>mall-userDetail</module>
+        <module>mall-user</module>
         <module>mall-comm</module>
-        <module>mall-userDetail-standby</module>
+        <module>mall-user-standby</module>
         <module>mall-account</module>
         <module>mall-account-standby</module>
         <module>demo-dubbo-provider</module>
@@ -20,6 +20,7 @@
         <module>demo-oauth2-sso</module>
         <module>demo-oauth2-sso-client</module>
         <module>mall-product</module>
+        <module>demo-elastic</module>
     </modules>
 
     <parent>
@@ -35,8 +36,8 @@
     <packaging>pom</packaging>
 
     <properties>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <spring.cloud.version>Hoxton.SR9</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.6.RELEASE</spring.cloud.alibaba.version>
     </properties>

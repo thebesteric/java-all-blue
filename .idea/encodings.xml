@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/demo-dubbo-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-dubbo-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-elastic/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-jwt/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-oauth2-sso-client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-oauth2-sso/src/main/java" charset="UTF-8" />

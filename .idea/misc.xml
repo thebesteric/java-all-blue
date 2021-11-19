@@ -14,11 +14,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/demo-dubbo/pom.xml" />
-        <option value="$PROJECT_DIR$/getway/pom.xml" />
-        <option value="$PROJECT_DIR$/instrument-agent-demo/pom.xml" />
-        <option value="$PROJECT_DIR$/instrument-agent/pom.xml" />
-        <option value="$PROJECT_DIR$/mall/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-elasticsearch/pom.xml" />
       </set>
     </option>
   </component>

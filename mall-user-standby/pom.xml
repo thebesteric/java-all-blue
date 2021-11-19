@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mall-userDetail-standby</artifactId>
+    <artifactId>mall-user-standby</artifactId>
 
     <properties>
         <maven.compiler.source>14</maven.compiler.source>

@@ -17,6 +17,7 @@
         <module name="demo-dubbo-consumer" />
         <module name="nacos-config" />
         <module name="mall-user" />
+        <module name="demo-elastic" />
         <module name="mall-account" />
         <module name="mall-order" />
         <module name="demo-dubbo-provider" />
@@ -26,6 +27,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="demo-dubbo" target="14" />
+      <module name="demo-elasticsearch" target="8" />
       <module name="getway" target="14" />
       <module name="instrument-agent" target="14" />
       <module name="instrument-agent-demo" target="14" />
@@ -37,6 +39,7 @@
       <module name="demo-dubbo" options="-parameters" />
       <module name="demo-dubbo-consumer" options="-parameters" />
       <module name="demo-dubbo-provider" options="-parameters" />
+      <module name="demo-elastic" options="-parameters" />
       <module name="demo-jwt" options="-parameters" />
       <module name="demo-oauth2" options="-parameters" />
       <module name="demo-oauth2-sso" options="-parameters" />
