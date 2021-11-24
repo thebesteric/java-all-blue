@@ -13,6 +13,7 @@
         <module name="mall-account-standby" />
         <module name="demo-oauth2-sso" />
         <module name="mall-comm" />
+        <module name="demo-rabbitmq" />
         <module name="demo-oauth2-sso-client" />
         <module name="demo-dubbo-consumer" />
         <module name="nacos-config" />
@@ -28,6 +29,7 @@
     <bytecodeTargetLevel>
       <module name="demo-dubbo" target="14" />
       <module name="demo-elasticsearch" target="8" />
+      <module name="demo-rabbitmq-spring" target="8" />
       <module name="getway" target="14" />
       <module name="instrument-agent" target="14" />
       <module name="instrument-agent-demo" target="14" />
@@ -44,6 +46,8 @@
       <module name="demo-oauth2" options="-parameters" />
       <module name="demo-oauth2-sso" options="-parameters" />
       <module name="demo-oauth2-sso-client" options="-parameters" />
+      <module name="demo-rabbitmq" options="-parameters" />
+      <module name="demo-rabbitmq-spring" options="-parameters" />
       <module name="getway" options="-parameters" />
       <module name="instrument-agent" options="" />
       <module name="instrument-agent-demo" options="" />

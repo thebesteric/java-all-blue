@@ -21,6 +21,7 @@
         <module>demo-oauth2-sso-client</module>
         <module>mall-product</module>
         <module>demo-elastic</module>
+        <module>demo-rabbitmq</module>
     </modules>
 
     <parent>

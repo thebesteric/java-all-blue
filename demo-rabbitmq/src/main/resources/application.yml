@@ -1,0 +1,19 @@
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    virtual-host: /test
+    username: test
+    password: test
+    template:
+      mandatory: true # 是否启动 return 回调，当消息无法到达队列时会进行回调
+    publisher-returns: true
+    publisher-confirm-type: correlated
+    listener:
+      simple:
+        acknowledge-mode: manual # 简单模式手动确认
+        prefetch: 1 # 一次从队列中拉取多少条数据
+        concurrency: 1
+      direct:
+        acknowledge-mode: manual # 路由模式手动确认
+        prefetch: 1
