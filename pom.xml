@@ -22,6 +22,9 @@
         <module>mall-product</module>
         <module>demo-elastic</module>
         <module>demo-rabbitmq</module>
+        <module>demo-sharding-jdbc</module>
+        <module>demo-dubbo-simulate</module>
+        <module>demo-dubbo-interface</module>
     </modules>
 
     <parent>

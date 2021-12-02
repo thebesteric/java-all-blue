@@ -10,6 +10,7 @@
         <module name="demo-oauth2" />
         <module name="demo-jwt" />
         <module name="mall-user-standby" />
+        <module name="demo-sharding-jdbc" />
         <module name="mall-account-standby" />
         <module name="demo-oauth2-sso" />
         <module name="mall-comm" />
@@ -18,40 +19,31 @@
         <module name="demo-dubbo-consumer" />
         <module name="nacos-config" />
         <module name="mall-user" />
+        <module name="demo-dubbo-simulate" />
         <module name="demo-elastic" />
         <module name="mall-account" />
         <module name="mall-order" />
         <module name="demo-dubbo-provider" />
+        <module name="demo-dubbo-interface" />
         <module name="mall-product" />
         <module name="mall-gateway" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="demo-dubbo" target="14" />
-      <module name="demo-elasticsearch" target="8" />
-      <module name="demo-rabbitmq-spring" target="8" />
-      <module name="getway" target="14" />
-      <module name="instrument-agent" target="14" />
-      <module name="instrument-agent-demo" target="14" />
-      <module name="mall" target="14" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="demo-dubbo" options="-parameters" />
       <module name="demo-dubbo-consumer" options="-parameters" />
+      <module name="demo-dubbo-interface" options="-parameters" />
       <module name="demo-dubbo-provider" options="-parameters" />
+      <module name="demo-dubbo-simulate" options="-parameters" />
       <module name="demo-elastic" options="-parameters" />
       <module name="demo-jwt" options="-parameters" />
       <module name="demo-oauth2" options="-parameters" />
       <module name="demo-oauth2-sso" options="-parameters" />
       <module name="demo-oauth2-sso-client" options="-parameters" />
       <module name="demo-rabbitmq" options="-parameters" />
-      <module name="demo-rabbitmq-spring" options="-parameters" />
-      <module name="getway" options="-parameters" />
-      <module name="instrument-agent" options="" />
-      <module name="instrument-agent-demo" options="" />
-      <module name="mall" options="-parameters" />
+      <module name="demo-sharding-jdbc" options="-parameters" />
       <module name="mall-account" options="-parameters" />
       <module name="mall-account-standby" options="-parameters" />
       <module name="mall-comm" options="-parameters" />

@@ -2,14 +2,19 @@ server:
   port: 8081
 
 dubbo:
-  cloud:
-    # 指定需要订阅的微服务提供方，默认为扫描所有微服务，不建议使用。若需订阅多应用，使用 "," 分割
-    subscribed-services: spring-cloud-dubbo-provider
+
+#  cloud:
+#    # 指定需要订阅的微服务提供方，默认为扫描所有微服务，不建议使用。若需订阅多应用，使用 "," 分割
+#    subscribed-services: spring-cloud-dubbo-provider
+
   protocol:
     # dubbo 协议
     name: dubbo
     # dubbo 协议端口，-1 表示自增端口，从 20880 开始绑定
     port: -1
+
+  registry:
+    address: zookeeper://127.0.0.1:2181
 
 spring:
   application:

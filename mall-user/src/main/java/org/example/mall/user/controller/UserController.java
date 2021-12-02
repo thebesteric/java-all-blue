@@ -31,6 +31,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/error")
+    public R error() {
+        throw new RuntimeException("error");
+    }
+
     @GetMapping("/get/{id}")
     public R get(@PathVariable String id,
                      @RequestHeader(value = "X-Request-color", required = false) String xRequestColor,

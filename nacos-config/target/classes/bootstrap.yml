@@ -13,7 +13,7 @@ spring:
         # -- 配置中心开关
         enabled: true
         # -- 配置中心地址
-        server-addr: 127.0.0.1:8848
+        server-addr: ${nacos_path}
         # -- dataid 为 yml 的文件扩展名配置方式
         # -- ${spring.application.name}.${file.extension:properties}
         # -- nacos-config.yml
