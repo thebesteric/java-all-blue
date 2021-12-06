@@ -25,6 +25,7 @@
         <module>demo-sharding-jdbc</module>
         <module>demo-dubbo-simulate</module>
         <module>demo-dubbo-interface</module>
+        <module>demo-dubbo-spi</module>
     </modules>
 
     <parent>

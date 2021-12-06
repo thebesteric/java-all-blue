@@ -13,6 +13,7 @@
         <module name="demo-sharding-jdbc" />
         <module name="mall-account-standby" />
         <module name="demo-oauth2-sso" />
+        <module name="demo-dubbo-spi" />
         <module name="mall-comm" />
         <module name="demo-rabbitmq" />
         <module name="demo-oauth2-sso-client" />
@@ -37,6 +38,7 @@
       <module name="demo-dubbo-interface" options="-parameters" />
       <module name="demo-dubbo-provider" options="-parameters" />
       <module name="demo-dubbo-simulate" options="-parameters" />
+      <module name="demo-dubbo-spi" options="-parameters" />
       <module name="demo-elastic" options="-parameters" />
       <module name="demo-jwt" options="-parameters" />
       <module name="demo-oauth2" options="-parameters" />
