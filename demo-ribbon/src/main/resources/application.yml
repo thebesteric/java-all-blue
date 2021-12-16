@@ -1,11 +1,9 @@
 server:
-  port: 8080
+  port: 8030
 
 spring:
   application:
-    name: mall-order
-  main:
-    allow-bean-definition-overriding: true
+    name: demo-ribbon
 
   cloud:
     nacos:
@@ -14,13 +12,15 @@ spring:
         cluster-name: ShangHai
         metadata:
           version: v1
-    # 如果使用 spring cloud loadBalancer 的话，需要剔除 ribbon
+
+    # 如果使用 spring cloud loadBalancer 的话，需要剔除 ribbon，则 enable: false
     loadbalancer:
       ribbon:
-        enabled: false
+        enabled: true
 
 # 被调用对服务名
 # 当需要使用局部配置的时候，推荐使用这种方式，还可以使用 @RibbonClients 进行配置
+# 但是使用 @RibbonClients 要注意不要配 启动类 扫描到，否则会变成全局配置
 #mall-user:
 #  ribbon:
 #    # 指定使用 NacosRule 做为负载均衡策略
@@ -32,23 +32,4 @@ ribbon:
     # 开启 ribbon 饥饿加载
     enabled: true
     # 配置 mall-user 使用饥饿加载，多个使用逗号分隔
-    clients: mall-user
-
-logging:
-  level:
-    org:
-      example:
-        mall: DEBUG
-
-feign:
-  client:
-    config:
-      mall-user:
-        # 局部日志文件配置
-        loggerLevel: FULL
-        # 超时配置
-        # 连接超时，默认 2s
-        connectTimeout: 5000
-        # 请求处理超时：默认 5s
-        readTimeout: 10000
-
+    clients: mall-account

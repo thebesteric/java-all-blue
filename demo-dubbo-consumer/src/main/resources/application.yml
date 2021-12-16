@@ -2,6 +2,9 @@ server:
   port: 8081
 
 dubbo:
+  # 可以忽略
+  application:
+    name: ${spring.application.name}
 
 #  cloud:
 #    # 指定需要订阅的微服务提供方，默认为扫描所有微服务，不建议使用。若需订阅多应用，使用 "," 分割
@@ -13,8 +16,11 @@ dubbo:
     # dubbo 协议端口，-1 表示自增端口，从 20880 开始绑定
     port: -1
 
-  registry:
-    address: zookeeper://127.0.0.1:2181
+
+#  registry:
+#    # 这里不能直接写 nacos://127.0.0.1:8848, 会让注册中心出现很多无用的实例
+#    # 可以使用 spring-cloud://127.0.0.1:8848
+#    address: zookeeper://127.0.0.1:2181
 
 spring:
   application:

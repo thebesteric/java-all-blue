@@ -1,11 +1,16 @@
 package org.example.mall.order;
 
 import com.alibaba.cloud.nacos.ribbon.NacosRule;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.netflix.loadbalancer.IRule;
-import feign.Logger;
-import feign.Request;
-import feign.RequestInterceptor;
+import feign.*;
 import io.github.thebesteric.framework.switchlogger.annotation.EnableSwitchLogger;
+import io.github.thebesteric.framework.switchlogger.core.domain.InvokeLog;
+import io.github.thebesteric.framework.switchlogger.core.domain.RequestLog;
+import io.github.thebesteric.framework.switchlogger.utils.JsonUtils;
+import io.github.thebesteric.framework.switchlogger.utils.TransactionUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.example.mall.anno.MyLoadBalanced;
 import org.example.mall.order.intercept.FeignAuthInterceptor;
 import org.example.mall.order.intercept.MyLoadBalancerInterceptor;
@@ -22,8 +27,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
-import java.util.List;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 @SpringBootApplication
 @EnableDiscoveryClient // 开启 nacos client（可以不用加）
@@ -95,6 +104,11 @@ public class OrderApp {
         }
 
         @Bean
+        public Logger logger() {
+            return new FeignLog(this.getClass());
+        }
+
+        @Bean
         public Logger.Level feignLogLevel() {
             // NONE: 不输出日志
             // BASIC: 只输出请求方法的 URL，响应状态码，接口执行时间
@@ -111,6 +125,175 @@ public class OrderApp {
 
             // 自定义拦截器
             return new FeignAuthInterceptor();
+        }
+
+        static final class FeignLog extends feign.Logger {
+
+            private final Log log;
+            private final Boolean recordLog;
+
+            private final static ThreadLocal<RequestLog> requestLogThreadLocal = new ThreadLocal<>();
+
+            public FeignLog(Class<?> clazz) {
+                log = LogFactory.getLog(clazz);
+                this.recordLog = log.isInfoEnabled();
+            }
+
+            @Override
+            protected void log(String configKey, String format, Object... args) {
+                String trackId = TransactionUtils.get();
+                log.info(String.format(methodTag(configKey) + format, args));
+            }
+
+            @Override
+            protected void logRequest(String configKey, Level logLevel, Request request) {
+                RequestLog requestLog = new RequestLog();
+                requestLog.setCreatedTime(System.currentTimeMillis());
+                requestLog.setTag("feign");
+                requestLog.setLevel(RequestLog.LEVEL_INFO);
+                requestLog.setTrackId(TransactionUtils.get());
+                requestLog.setRequestSessionId(TransactionUtils.get());
+
+                if (request.requestTemplate() != null) {
+
+                    // uri & url
+                    String url = request.requestTemplate().url();
+                    requestLog.setUrl(url);
+                    String[] arr = url.split("//");
+                    if (arr.length > 1) {
+                        String uri = arr[1].substring(arr[1].indexOf("/"));
+                        requestLog.setUri(uri);
+                    }
+
+                    // uri info
+                    URI uri = URI.create(url);
+                    requestLog.setProtocol(uri.getScheme());
+                    requestLog.setServerName(uri.getHost());
+                    requestLog.setRemoteAddr(uri.getHost());
+                    requestLog.setRemotePort(uri.getPort());
+                    requestLog.setQueryString(uri.getQuery());
+
+                    // request body
+                    requestLog.setRawBody(request.body() == null ? null : new String(request.body(), StandardCharsets.UTF_8));
+                    if (requestLog.getRawBody() != null) {
+                        try {
+                            requestLog.setBody(JsonUtils.mapper.readValue(requestLog.getRawBody(), Map.class));
+                        } catch (JsonProcessingException e) {
+                            log.warn(String.format("cannot parse body to json: %s", requestLog.getRawBody()));
+                        }
+                    }
+
+                    // url params
+                    final HashMap<String, String> params = new LinkedHashMap<>();
+                    if (requestLog.getUrl() != null && requestLog.getUrl().split("\\?").length > 1) {
+                        final String[] urlSplitArr = requestLog.getUrl().split("\\?");
+                        final String[] paramKeyValueArr = urlSplitArr[1].split("&");
+                        for (String keyValue : paramKeyValueArr) {
+                            final String[] keyValueArr = keyValue.split("=");
+                            params.put(keyValueArr[0], keyValueArr.length > 1 ? keyValueArr[1] : null);
+                        }
+                    }
+                    requestLog.setParams(params);
+
+                    // headers
+                    Map<String, String> headers = new HashMap<>();
+                    request.requestTemplate().headers().forEach((key, values) -> {
+                        String value = String.join(",", values);
+                        headers.put(key, value);
+                    });
+                    requestLog.setHeaders(headers);
+
+                    // http method
+                    requestLog.setMethod(request.httpMethod().name());
+
+                    // execute info
+                    InvokeLog.ExecuteInfo executeInfo = new InvokeLog.ExecuteInfo();
+                    executeInfo.setStartTime(System.currentTimeMillis());
+
+                    // class info
+                    if (request.requestTemplate().feignTarget() != null && request.requestTemplate().feignTarget().type() != null) {
+                        Class<?> clazz = request.requestTemplate().feignTarget().type();
+                        executeInfo.setClassName(clazz.getName());
+                    }
+
+                    // method info
+                    if (request.requestTemplate().methodMetadata() != null && request.requestTemplate().methodMetadata().returnType() != null) {
+                        InvokeLog.ExecuteInfo.MethodInfo methodInfo = new InvokeLog.ExecuteInfo.MethodInfo();
+                        Method method = request.requestTemplate().methodMetadata().method();
+                        methodInfo.setMethodName(method.getName());
+                        methodInfo.setReturnType(method.getReturnType().getName());
+
+                        // method signatures
+                        final LinkedHashMap<String, Object> methodSignatures = new LinkedHashMap<>();
+                        Parameter[] parameters = method.getParameters();
+                        for (Parameter parameter : parameters) {
+                            methodSignatures.put(parameter.getName(), parameter.getParameterizedType().getTypeName());
+                        }
+                        methodInfo.setSignatures(methodSignatures);
+
+                        // method arguments
+                        final LinkedHashMap<String, Object> methodArgs = new LinkedHashMap<>();
+                        if (request.requestTemplate().methodMetadata().indexToName() != null && request.requestTemplate().methodMetadata().indexToName().size() > 0) {
+                            for (Map.Entry<Integer, Collection<String>> entry : request.requestTemplate().methodMetadata().indexToName().entrySet()) {
+                                final String paramName = entry.getValue().toArray()[0].toString();
+                                final Collection<String> paramValues = request.headers().getOrDefault(paramName, null);
+                                String paramValue = null;
+                                if (paramValues != null && paramValues.size() > 0) {
+                                    paramValue = paramValues.toArray()[0].toString();
+                                }
+                                if (paramValue == null && params.containsKey(paramName)) {
+                                    paramValue = params.get(paramName);
+                                }
+                                methodArgs.put(paramName, paramValue);
+                            }
+                            methodInfo.setArguments(methodArgs);
+                        }
+
+                        // set MethodInfo
+                        executeInfo.setMethodInfo(methodInfo);
+                    }
+
+                    requestLog.setExecuteInfo(executeInfo);
+                }
+
+                System.out.println(requestLog);
+                requestLogThreadLocal.set(requestLog);
+            }
+
+            @Override
+            protected Response logAndRebufferResponse(String configKey, Level logLevel, Response response, long elapsedTime) throws IOException {
+                final RequestLog requestLog = requestLogThreadLocal.get();
+                requestLogThreadLocal.remove();
+                requestLog.setDuration(elapsedTime);
+                int status = response.status();
+                if (response.body() != null) {
+                    byte[] bodyData = feign.Util.toByteArray(response.body().asInputStream());
+                    if (bodyData.length > 0) {
+                        String responseBody = feign.Util.decodeOrDefault(bodyData, feign.Util.UTF_8, "Binary data");
+                        requestLog.setResult(responseBody);
+                    }
+                    if (status != 200 && status != 100) {
+                        requestLog.setLevel(RequestLog.LEVEL_ERROR);
+                        log.error(requestLog);
+                    } else {
+                        log.info(requestLog);
+                    }
+                    return response.toBuilder().body(bodyData).build();
+                }
+                log.error(requestLog);
+                return response;
+            }
+
+            @Override
+            protected IOException logIOException(String configKey, Level logLevel, IOException ioe, long elapsedTime) {
+                final RequestLog requestLog = requestLogThreadLocal.get();
+                requestLogThreadLocal.remove();
+                requestLog.setLevel(RequestLog.LEVEL_ERROR);
+                requestLog.setException(ioe.getMessage());
+                requestLog.setDuration(elapsedTime);
+                log.error(requestLog);
+                return ioe;
+            }
         }
     }
 

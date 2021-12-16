@@ -26,6 +26,8 @@
         <module>demo-dubbo-simulate</module>
         <module>demo-dubbo-interface</module>
         <module>demo-dubbo-spi</module>
+        <module>demo-ribbon</module>
+        <module>demo-feign</module>
     </modules>
 
     <parent>

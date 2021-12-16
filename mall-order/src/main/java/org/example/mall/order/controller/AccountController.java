@@ -3,10 +3,7 @@ package org.example.mall.order.controller;
 import org.example.mall.comm.R;
 import org.example.mall.order.feign.AccountFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/account")
@@ -16,8 +13,8 @@ public class AccountController {
     private AccountFeignService accountFeignService;
 
     @GetMapping("/get/{id}")
-    public R getOrder(@PathVariable String id) {
-        return accountFeignService.get(id);
+    public R getOrder(@PathVariable String id, @RequestParam String name, @RequestParam int age) {
+        return accountFeignService.get(id, name, age);
     }
 
 }

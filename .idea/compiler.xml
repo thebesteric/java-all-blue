@@ -12,6 +12,7 @@
         <module name="mall-user-standby" />
         <module name="demo-sharding-jdbc" />
         <module name="mall-account-standby" />
+        <module name="demo-ribbon" />
         <module name="demo-oauth2-sso" />
         <module name="demo-dubbo-spi" />
         <module name="mall-comm" />
@@ -26,11 +27,14 @@
         <module name="mall-order" />
         <module name="demo-dubbo-provider" />
         <module name="demo-dubbo-interface" />
+        <module name="demo-feign" />
         <module name="mall-product" />
         <module name="mall-gateway" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="demo" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -40,11 +44,13 @@
       <module name="demo-dubbo-simulate" options="-parameters" />
       <module name="demo-dubbo-spi" options="-parameters" />
       <module name="demo-elastic" options="-parameters" />
+      <module name="demo-feign" options="-parameters" />
       <module name="demo-jwt" options="-parameters" />
       <module name="demo-oauth2" options="-parameters" />
       <module name="demo-oauth2-sso" options="-parameters" />
       <module name="demo-oauth2-sso-client" options="-parameters" />
       <module name="demo-rabbitmq" options="-parameters" />
+      <module name="demo-ribbon" options="-parameters" />
       <module name="demo-sharding-jdbc" options="-parameters" />
       <module name="mall-account" options="-parameters" />
       <module name="mall-account-standby" options="-parameters" />

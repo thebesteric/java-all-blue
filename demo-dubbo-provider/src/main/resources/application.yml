@@ -13,17 +13,18 @@ spring:
         server-addr: 127.0.0.1:8848
 
 dubbo:
+  # 可以忽略
   application:
     name: ${spring.application.name}
   scan:
     # 指定 dubbo 服务实现类的扫描基准包
     base-packages: org.example.demo.dubbo.provider.service
 
-#  protocol:
-#    # dubbo 协议（使用 netty 作为服务器）
-#    name: dubbo
-#    # dubbo 协议端口，-1 表示自增端口，从 20880 开始绑定
-#    port: -1
+  protocol:
+    # dubbo 协议（使用 netty 作为服务器）
+    name: dubbo
+    # dubbo 协议端口，-1 表示自增端口，从 20880 开始绑定
+    port: -1
 
   protocols:
     p1:
@@ -42,6 +43,6 @@ dubbo:
       port: 20883
       host: 0.0.0.0
 
-  registry:
-    # 指定 dubbo 注册中心地址
-    address: zookeeper://127.0.0.1:2181
+#  registry:
+#    # 指定 dubbo 注册中心地址
+#    address: zookeeper://127.0.0.1:2181

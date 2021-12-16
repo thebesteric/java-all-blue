@@ -44,6 +44,7 @@
 
         <!-- ============= -->
 
+        <!-- dubbo rest 协议支持 -->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>

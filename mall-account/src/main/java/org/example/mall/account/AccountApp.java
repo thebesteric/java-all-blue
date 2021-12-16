@@ -5,10 +5,9 @@ import org.example.mall.comm.R;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -23,7 +22,12 @@ public class AccountApp extends BaseController {
 
         @GetMapping("/{id}")
         public R get(@PathVariable String id) {
-            return R.success().setMessage(getHost()).setData(100.00);
+            return R.success().setData(id).setMessage(getHost());
+        }
+
+        @PostMapping("/save")
+        public R save(@RequestBody Map<String, Object> params) {
+            return R.success().setData(params).setMessage(getHost());
         }
     }
 }
