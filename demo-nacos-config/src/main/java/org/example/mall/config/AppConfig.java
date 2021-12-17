@@ -8,6 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
@@ -17,6 +18,7 @@ public class AppConfig {
         ConfigurableApplicationContext context = SpringApplication.run(AppConfig.class, args);
 
         while (true) {
+            Map<String, String> xxx = context.getEnvironment().getProperty("xxx", Map.class);
             String name = context.getEnvironment().getProperty("commons.name");
             String age = context.getEnvironment().getProperty("commons.age");
             System.out.println("name=" + name + " age=" + age);

@@ -37,7 +37,7 @@ spring:
             refresh: true
 
 
-# 优先级
+# 优先级 对应 nacos-config 的 dataId
 # ${spring.application.name}-${profile}.${file.extension:properties}
 # ${spring.application.name}.${file.extension:properties}
 # ${spring.application.name}
