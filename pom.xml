@@ -13,7 +13,7 @@
         <module>mall-account-standby</module>
         <module>demo-dubbo-provider</module>
         <module>demo-dubbo-consumer</module>
-        <module>nacos-config</module>
+        <module>demo-nacos-config</module>
         <module>mall-gateway</module>
         <module>demo-oauth2</module>
         <module>demo-jwt</module>

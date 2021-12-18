@@ -27,7 +27,7 @@ public class NacosServiceDemo {
 
         // 从配置中心拉取配置
         String content = configService.getConfig(dataId, group, 5000);
-        System.out.println(content);
+        System.out.println("原有配置:" + content);
 
         // 注册监听器
         configService.addListener(dataId, group, new Listener() {
@@ -43,7 +43,7 @@ public class NacosServiceDemo {
         });
 
         // 发布配置
-        boolean succeed = configService.publishConfig(dataId, group, "common: age: 30", ConfigType.YAML.getType());
+        boolean succeed = configService.publishConfig(dataId, group, "common: age: 40", ConfigType.YAML.getType());
         if (succeed) {
             System.out.println("发布成功");
             TimeUnit.SECONDS.sleep(5);
@@ -54,6 +54,8 @@ public class NacosServiceDemo {
         } else {
             System.out.println("发布失败");
         }
+
+        TimeUnit.SECONDS.sleep(30);
 
     }
 }

@@ -1,3 +1,8 @@
 commons:
   name: test
   age: 101
+
+configuration:
+  route-type:
+    1: 类型1
+    2: 类型2

@@ -34,6 +34,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="demo" target="8" />
+      <module name="demo-nacos-config" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -46,6 +47,7 @@
       <module name="demo-elastic" options="-parameters" />
       <module name="demo-feign" options="-parameters" />
       <module name="demo-jwt" options="-parameters" />
+      <module name="demo-nacos-config" options="-parameters" />
       <module name="demo-oauth2" options="-parameters" />
       <module name="demo-oauth2-sso" options="-parameters" />
       <module name="demo-oauth2-sso-client" options="-parameters" />

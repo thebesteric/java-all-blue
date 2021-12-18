@@ -9,6 +9,7 @@
     <file url="file://$PROJECT_DIR$/demo-elastic/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-feign/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-jwt/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-nacos-config/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-oauth2-sso-client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-oauth2-sso/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-oauth2/src/main/java" charset="UTF-8" />
@@ -24,6 +25,5 @@
     <file url="file://$PROJECT_DIR$/mall-user-standby/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-user-standby/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-user/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/nacos-config/src/main/java" charset="UTF-8" />
   </component>
 </project>
