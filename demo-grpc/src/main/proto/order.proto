@@ -1,0 +1,23 @@
+syntax = "proto3";
+package org.example.protobuf.proto;
+
+option java_package = "org.example.protobuf.proto";
+option java_outer_classname = "OrderServiceApi";
+option java_multiple_files = true;
+
+service OrderService {
+  // 服务端流模式，入参是买家消息，出参是订单列表（用流的模式）
+  rpc listOrders(Buyer) returns (stream Order) {
+  }
+}
+
+message Buyer {
+  int32 buyerId = 1;
+}
+
+message Order {
+  int32 orderId = 1;
+  int32 productId = 2;
+  int64 orderTime = 3;
+  string buyerMarker = 4;
+}

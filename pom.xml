@@ -28,6 +28,9 @@
         <module>demo-dubbo-spi</module>
         <module>demo-ribbon</module>
         <module>demo-feign</module>
+        <module>demo-grpc-boot-starter-lib</module>
+        <module>demo-grpc-boot-starter-server</module>
+        <module>demo-grpc-boot-starter-client</module>
     </modules>
 
     <parent>
@@ -71,12 +74,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>mall-comm</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
         <!-- apache httpclient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -94,6 +91,13 @@
     <dependencyManagement>
 
         <dependencies>
+
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>mall-comm</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

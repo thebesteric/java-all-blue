@@ -1,0 +1,30 @@
+syntax = "proto3"; // 协议版本，proto3 中，在第一行非空白行，必须写 syntax="proto3"
+package org.example.protobuf.proto; // proto 的包名，防止 .proto 项目间命名发送冲突
+
+option java_package = "org.example.protobuf.proto"; // 作用：指定生产的 java 包名
+option java_outer_classname = "Demo"; // 作用：指定 java 类名
+
+message Person {
+	// 字段格式为：类型 名称 = 标识号
+	string name = 1;
+	int32 id = 2;
+	string email = 3;
+
+	enum PhoneType {
+		// 枚举的标识号必须从 0 开始
+		MOBILE = 0;
+		HOME = 1;
+		WORK = 2;
+	}
+
+	message PhoneNumber {
+		string number = 1;
+		PhoneType type = 2;
+	}
+
+	repeated PhoneNumber phone = 4;
+}
+
+message AddressBook {
+	repeated Person person = 1;
+}

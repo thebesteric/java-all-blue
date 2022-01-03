@@ -1,0 +1,25 @@
+syntax = "proto3";
+package org.example.protobuf.proto;
+
+option java_package = "org.example.protobuf.proto";
+option java_outer_classname = "RPCDataServiceApi";
+option java_multiple_files = true;
+
+// 服务接口，定义请求参数和响应结果
+service RPCDataService {
+  // API
+  rpc getData(RPCDataRequest) returns (RPCDataResponse) {
+  }
+}
+
+// 定义请求体
+message RPCDataRequest {
+  string userName = 1;
+}
+
+// 定义响应体
+message RPCDataResponse {
+  int32 code = 1;
+  string serverData = 2;
+  string message = 3;
+}

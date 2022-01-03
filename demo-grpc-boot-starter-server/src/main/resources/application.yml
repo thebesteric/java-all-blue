@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: local-grpc-server
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 # 配置 nacos 注册中心地址
+
+server:
+  port: 8080
+
+grpc:
+  server:
+    # grpc 服务端端口，设置为 0 表示会自动非配，用于有注册中心的情况
+#    port: 9090
+    port: 0

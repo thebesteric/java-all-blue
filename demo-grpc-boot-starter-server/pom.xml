@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mall-account</artifactId>
+    <artifactId>demo-grpc-boot-starter-server</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -17,9 +17,36 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>demo-grpc-boot-starter-lib</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- For the server (only) -->
+        <dependency>
+            <groupId>net.devh</groupId>
+            <artifactId>grpc-server-spring-boot-starter</artifactId>
+            <version>2.13.0.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-netty-shaded</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- fix com.google.protobuf.GeneratedMessageV3.isStringEmpty -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.19.1</version>
         </dependency>
 
         <!-- nacos client 服务注册与发现 -->
@@ -28,10 +55,6 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>mall-comm</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

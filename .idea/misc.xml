@@ -10,10 +10,12 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/mall-user-standby/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-grpc/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/demo-grpc-boot-starter/pom.xml" />
         <option value="$PROJECT_DIR$/demo/pom.xml" />
       </set>
     </option>
