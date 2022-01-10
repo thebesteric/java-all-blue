@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: demo-seata
+  datasource:
+    order:
+      url: jdbc:mysql://127.0.0.1:3306/seata_order?useUnicode=true&characterEncoding=UTF-8&userSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    storage:
+      url: jdbc:mysql://127.0.0.1:3306/seata_storage?useUnicode=true&characterEncoding=UTF-8&userSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    account:
+      url: jdbc:mysql://127.0.0.1:3306/seata_account?useUnicode=true&characterEncoding=UTF-8&userSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # Seata 事物分组
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group

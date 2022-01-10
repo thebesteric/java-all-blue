@@ -31,6 +31,7 @@
         <module>demo-grpc-boot-starter-lib</module>
         <module>demo-grpc-boot-starter-server</module>
         <module>demo-grpc-boot-starter-client</module>
+        <module>demo-seata-multiple</module>
     </modules>
 
     <parent>

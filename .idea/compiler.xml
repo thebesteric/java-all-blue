@@ -10,11 +10,14 @@
         <module name="demo-grpc-boot-starter-server" />
         <module name="demo-ribbon" />
         <module name="demo-dubbo-spi" />
+        <module name="mysql-comm" />
+        <module name="demo-nacos-config" />
         <module name="demo-dubbo-consumer" />
         <module name="nacos-config" />
         <module name="demo-dubbo-simulate" />
         <module name="demo-grpc-boot-starter-lib" />
         <module name="demo-dubbo-provider" />
+        <module name="account-service" />
         <module name="demo-dubbo-interface" />
         <module name="demo-oauth2" />
         <module name="demo-jwt" />
@@ -22,15 +25,18 @@
         <module name="demo-grpc" />
         <module name="demo-sharding-jdbc" />
         <module name="mall-account-standby" />
+        <module name="storage-service" />
         <module name="demo-oauth2-sso" />
         <module name="mall-comm" />
         <module name="demo-rabbitmq" />
         <module name="demo-oauth2-sso-client" />
+        <module name="demo-seata-multiple" />
         <module name="mall-user" />
         <module name="demo-elastic" />
         <module name="demo-grpc-boot-starter-client" />
         <module name="mall-account" />
         <module name="mall-order" />
+        <module name="order-service" />
         <module name="demo-feign" />
         <module name="mall-product" />
         <module name="mall-gateway" />
@@ -39,11 +45,11 @@
     <bytecodeTargetLevel target="8">
       <module name="demo" target="8" />
       <module name="demo-grpc-boot-starter" target="8" />
-      <module name="demo-nacos-config" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="account-service" options="-parameters" />
       <module name="demo-dubbo-consumer" options="-parameters" />
       <module name="demo-dubbo-interface" options="-parameters" />
       <module name="demo-dubbo-provider" options="-parameters" />
@@ -63,6 +69,7 @@
       <module name="demo-oauth2-sso-client" options="-parameters" />
       <module name="demo-rabbitmq" options="-parameters" />
       <module name="demo-ribbon" options="-parameters" />
+      <module name="demo-seata-multiple" options="-parameters" />
       <module name="demo-sharding-jdbc" options="-parameters" />
       <module name="mall-account" options="-parameters" />
       <module name="mall-account-standby" options="-parameters" />
@@ -72,7 +79,10 @@
       <module name="mall-product" options="-parameters" />
       <module name="mall-user" options="-parameters" />
       <module name="mall-user-standby" options="-parameters" />
+      <module name="mysql-comm" options="-parameters" />
       <module name="nacos-config" options="-parameters" />
+      <module name="order-service" options="-parameters" />
+      <module name="storage-service" options="-parameters" />
     </option>
   </component>
 </project>
