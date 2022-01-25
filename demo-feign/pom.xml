@@ -76,6 +76,11 @@
             <artifactId>feign-okhttp</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>mall-comm</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

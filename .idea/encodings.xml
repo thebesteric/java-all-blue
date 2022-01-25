@@ -18,6 +18,7 @@
     <file url="file://$PROJECT_DIR$/demo-oauth2-sso/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-oauth2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-rabbitmq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-redis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-ribbon/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-seata-cloud/account-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-seata-cloud/mysql-comm/src/main/java" charset="UTF-8" />
@@ -27,6 +28,9 @@
     <file url="file://$PROJECT_DIR$/demo-seata-cloud/storage-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-seata-multiple/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-sharding-jdbc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-zookeeper-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-zookeeper-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-zookeeper/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-account-standby/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-account/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-comm/src/main/java" charset="UTF-8" />

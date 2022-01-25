@@ -1,0 +1,16 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: user-service
+
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    zookeeper:
+      connect-string: 127.0.0.1:2181
+      discovery:
+        register: false # 单纯的消费者额，可以不向 zk 进行注册
+      session-timeout: 30000

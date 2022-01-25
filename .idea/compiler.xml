@@ -9,8 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="demo-grpc-boot-starter-server" />
         <module name="demo-ribbon" />
+        <module name="demo-zookeeper-consumer" />
         <module name="demo-dubbo-spi" />
         <module name="mysql-comm" />
+        <module name="demo-zookeeper" />
         <module name="demo-nacos-config" />
         <module name="demo-dubbo-consumer" />
         <module name="nacos-config" />
@@ -30,7 +32,9 @@
         <module name="mall-comm" />
         <module name="demo-rabbitmq" />
         <module name="demo-oauth2-sso-client" />
+        <module name="demo-redis" />
         <module name="demo-seata-multiple" />
+        <module name="demo-zookeeper-provider" />
         <module name="mall-user" />
         <module name="demo-elastic" />
         <module name="demo-grpc-boot-starter-client" />
@@ -68,9 +72,13 @@
       <module name="demo-oauth2-sso" options="-parameters" />
       <module name="demo-oauth2-sso-client" options="-parameters" />
       <module name="demo-rabbitmq" options="-parameters" />
+      <module name="demo-redis" options="-parameters" />
       <module name="demo-ribbon" options="-parameters" />
       <module name="demo-seata-multiple" options="-parameters" />
       <module name="demo-sharding-jdbc" options="-parameters" />
+      <module name="demo-zookeeper" options="-parameters" />
+      <module name="demo-zookeeper-consumer" options="-parameters" />
+      <module name="demo-zookeeper-provider" options="-parameters" />
       <module name="mall-account" options="-parameters" />
       <module name="mall-account-standby" options="-parameters" />
       <module name="mall-comm" options="-parameters" />

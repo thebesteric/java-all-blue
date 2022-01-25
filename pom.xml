@@ -32,6 +32,10 @@
         <module>demo-grpc-boot-starter-server</module>
         <module>demo-grpc-boot-starter-client</module>
         <module>demo-seata-multiple</module>
+        <module>demo-redis</module>
+        <module>demo-zookeeper</module>
+        <module>demo-zookeeper-provider</module>
+        <module>demo-zookeeper-consumer</module>
     </modules>
 
     <parent>
