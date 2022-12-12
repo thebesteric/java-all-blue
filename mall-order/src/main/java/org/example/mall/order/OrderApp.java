@@ -71,28 +71,6 @@ public class OrderApp {
         // return new VersionRule();
     }
 
-    // @Configuration
-    public static class MyLoadBalancerConfiguration {
-
-        @Autowired(required = false)
-        @MyLoadBalanced // 限定注入属性
-        public List<RestTemplate> restTemplates = Collections.emptyList();
-
-        @Bean
-        public MyLoadBalancerInterceptor myLoadBalancerInterceptor(LoadBalancerClient loadBalancerClient) {
-            return new MyLoadBalancerInterceptor(loadBalancerClient);
-        }
-
-        @Bean
-        public SmartInitializingSingleton myLoadBalancedRestTemplateInitializer(MyLoadBalancerInterceptor myLoadBalancerInterceptor) {
-            return () -> {
-                for (RestTemplate restTemplate : restTemplates) {
-                    restTemplate.setInterceptors(Collections.singletonList(myLoadBalancerInterceptor));
-                }
-            };
-        }
-    }
-
     // 全局配置，如果单独给某个微服务配置，需要在 @FeignClient 配置 configuration 属性，并注释 @Configuration
     // @FeignClient(value = "mall-user", path = "/user", configuration = OrderApp.FeignConfiguration.class)
     @Configuration // 不推荐，容易配置成全局
