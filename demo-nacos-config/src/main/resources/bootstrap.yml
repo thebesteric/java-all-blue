@@ -21,7 +21,7 @@ spring:
         # -- 自定义 namespace 的配置，可以配合 profile 使用
         # -- dev: a19d770e-0c72-4ec0-9224-5bf586be2628
         # -- prod: 40f89893-cedb-4d9a-8fe8-211c6b176577
-        namespace: a19d770e-0c72-4ec0-9224-5bf586be2628
+        namespace: public
         # -- 自定义 Group 的配置
         group: DEFAULT_GROUP
 

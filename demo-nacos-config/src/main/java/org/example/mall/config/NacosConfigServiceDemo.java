@@ -10,7 +10,7 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 
-public class NacosServiceDemo {
+public class NacosConfigServiceDemo {
 
     public static void main(String[] args) throws Exception {
 

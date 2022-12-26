@@ -22,6 +22,7 @@ public class AccountApp extends BaseController {
 
         @GetMapping("/{id}")
         public R get(@PathVariable String id) {
+            System.out.println("id=" + id);
             return R.success().setData(id).setMessage(getHost());
         }
 
