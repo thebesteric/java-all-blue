@@ -36,6 +36,7 @@
         <module name="demo-seata-multiple" />
         <module name="demo-zookeeper-provider" />
         <module name="mall-user" />
+        <module name="demo-elasticsearch" />
         <module name="demo-elastic" />
         <module name="demo-grpc-boot-starter-client" />
         <module name="mall-account" />
@@ -60,6 +61,7 @@
       <module name="demo-dubbo-simulate" options="-parameters" />
       <module name="demo-dubbo-spi" options="-parameters" />
       <module name="demo-elastic" options="-parameters" />
+      <module name="demo-elasticsearch" options="-parameters" />
       <module name="demo-feign" options="-parameters" />
       <module name="demo-grpc" options="" />
       <module name="demo-grpc-boot-starter" options="-parameters" />

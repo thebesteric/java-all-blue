@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/mall-user-standby/pom.xml" />
         <option value="$PROJECT_DIR$/demo-grpc/pom.xml" />
         <option value="$PROJECT_DIR$/demo-seata-cloud/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-elasticsearch/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
