@@ -17,6 +17,7 @@
         <module>mall-gateway</module>
         <module>demo-oauth2</module>
         <module>demo-jwt</module>
+        <module>demo-springboot</module>
         <module>demo-oauth2-sso</module>
         <module>demo-oauth2-sso-client</module>
         <module>mall-product</module>
