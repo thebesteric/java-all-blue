@@ -19,7 +19,7 @@
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>1.10.22</version>
+            <version>1.12.10</version>
         </dependency>
 
         <dependency>
@@ -54,4 +54,39 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifestEntries>
+                            <!-- 指定 premain 方法所在的类，会写入 jar 包中的 MANIFEST.MF 文件中 -->
+                            <!-- <Premain-Class>org.example.bytebuddy.demo.instance.AgentDemo</Premain-Class> -->
+                            <!--<Premain-Class>org.example.bytebuddy.demo.staticmethod.AgentStaticMethodDemo</Premain-Class> -->
+                            <Premain-Class>org.example.bytebuddy.demo.construct.AgentConstructDemo</Premain-Class>
+                            <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                            <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>one_jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

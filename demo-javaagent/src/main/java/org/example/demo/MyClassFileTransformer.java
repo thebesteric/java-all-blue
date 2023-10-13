@@ -38,15 +38,15 @@ public class MyClassFileTransformer implements ClassFileTransformer {
                             ProtectionDomain protectionDomain,
                             byte[] classfileBuffer) throws IllegalClassFormatException {
         byte[] bytecode = null;
-        if ("com/example/demojavaagent/service/HelloService".equals(className)) {
+        if ("org/example/springboot/service/HelloService".equals(className)) {
             // asm, javassist, cglib, bytebuddy 来加强
             ClassPool classPool = ClassPool.getDefault();
             try {
-                CtClass ctClass = classPool.get("com.example.demojavaagent.service.HelloService");
-                CtMethod sayHelloMethod = ctClass.getDeclaredMethod("sayHello", new CtClass[]{classPool.get("java.lang.String")});
+                CtClass ctClass = classPool.get("org.example.springboot.service.HelloService");
+                CtMethod sayHelloMethod = ctClass.getDeclaredMethod("hello", new CtClass[]{classPool.get("java.lang.String")});
                 sayHelloMethod.insertBefore("{System.out.println(\"before say\");}");
                 bytecode = ctClass.toBytecode();
-                log.info("transform class {} completed.", className);
+                log.info("=========== transform class {} completed. ===========", className);
             } catch (Exception e) {
                 log.error("transform error", e);
             }

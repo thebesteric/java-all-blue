@@ -1,0 +1,2 @@
+springmvc=com.example.agent.plugin.springmvc.ControllerInstrumentation
+springmvc=com.example.agent.plugin.springmvc.RestControllerInstrumentation
