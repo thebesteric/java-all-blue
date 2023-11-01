@@ -1,5 +1,6 @@
 package org.example.demo.demo;
 
+import lombok.Data;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.NamingStrategy;
 import net.bytebuddy.description.type.TypeDescription;
@@ -26,6 +27,7 @@ import java.lang.reflect.Modifier;
  * @version v1.0
  * @since 2023-08-29 00:12:10
  */
+@Data
 public class Test01 {
 
     private String path;
