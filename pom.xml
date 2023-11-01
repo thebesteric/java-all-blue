@@ -37,6 +37,7 @@
         <module>demo-zookeeper-provider</module>
         <module>demo-zookeeper-consumer</module>
         <module>demo-springboot</module>
+        <module>demo-mapstruct</module>
     </modules>
 
     <parent>
